@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Lenis from 'lenis'
-// @ts-expect-error: Lenis ships a CSS asset without bundled TypeScript declarations
 import 'lenis/dist/lenis.css'
 import { HeroSection } from './sections/HeroSection'
 import { MarqueeSection } from './sections/MarqueeSection'
