@@ -6,6 +6,7 @@ interface ContactButtonProps {
   onClick?: () => void
   href?: string
   label?: string
+  target?: React.HTMLAttributeAnchorTarget
 }
 
 export const ContactButton: React.FC<ContactButtonProps> = ({
@@ -13,6 +14,7 @@ export const ContactButton: React.FC<ContactButtonProps> = ({
   onClick,
   href = '#contact',
   label = 'Contact Me',
+  target,
 }) => {
   const content = (
     <motion.button
@@ -35,7 +37,12 @@ export const ContactButton: React.FC<ContactButtonProps> = ({
 
   if (href) {
     return (
-      <a href={href} className="inline-block no-underline">
+      <a
+        href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        className="inline-block no-underline"
+      >
         {content}
       </a>
     )

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { HeroSection } from './sections/HeroSection'
@@ -9,10 +9,14 @@ import { ExperienceSection } from './sections/ExperienceSection'
 import { ProjectsSection } from './sections/ProjectsSection'
 import { HorizontalSection } from './sections/HorizontalSection'
 import { ContactButton } from './components/ContactButton'
+import { CursorTrail } from './components/CursorTrail'
 import { FadeIn } from './components/FadeIn'
-import { Mail, Github, Linkedin, ArrowUp } from 'lucide-react'
+import { ScrollJourney } from './components/ScrollJourney'
+import { Mail, Github, Linkedin, MessageCircle, ArrowUp } from 'lucide-react'
 
 export const App: React.FC = () => {
+  const scrollJourneyRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
@@ -80,6 +84,9 @@ export const App: React.FC = () => {
         {/* 2. PROJECT PREVIEW GALLERY (MARQUEE) */}
         <MarqueeSection />
 
+      </main>
+
+      <div ref={scrollJourneyRef} className="relative">
         {/* 3. ABOUT ME SECTION */}
         <AboutSection />
 
@@ -94,67 +101,78 @@ export const App: React.FC = () => {
 
         {/* 7. PROJECT DETAIL & CASE STUDY SECTION (HORIZONTAL SCROLL) */}
         <HorizontalSection />
-      </main>
 
-      {/* 8. CONTACT & FOOTER SECTION */}
-      <footer id="contact" className="bg-[#0C0C0C] border-t border-white/10 px-6 md:px-12 py-16 sm:py-20 relative z-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-          <FadeIn delay={0} y={20} className="flex flex-col gap-2">
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-purple-400 font-mono">
-              // Get In Touch
-            </span>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
-              Let&apos;s build something great
-            </h3>
-            <p className="text-[#D7E2EA]/75 text-sm sm:text-base font-light max-w-lg leading-relaxed">
-              I&apos;m open to exciting developer opportunities and projects where I can build useful digital products, contribute to modern web applications, and continue growing as a Full Stack Developer.
-            </p>
-          </FadeIn>
+        <CursorTrail />
+        <ScrollJourney containerRef={scrollJourneyRef} />
 
-          <FadeIn delay={0.15} y={20} className="flex flex-col sm:flex-row items-center gap-4">
-            <ContactButton
-              href="mailto:praveen.dev@example.com?subject=Developer%20Opportunity%20/%20Project%20Inquiry"
-              label="Let's Connect"
-              onClick={() => {}}
-            />
-            <button
-              onClick={scrollToTop}
-              title="Back to Top"
-              className="p-3.5 rounded-full border border-white/20 text-[#D7E2EA] hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </button>
-          </FadeIn>
-        </div>
+        {/* 8. CONTACT & FOOTER SECTION */}
+        <footer id="contact" className="bg-[#0C0C0C] border-t border-white/10 px-6 md:px-12 py-16 sm:py-20 relative z-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <FadeIn delay={0} y={20} className="flex flex-col gap-2">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-purple-400 font-mono">
+                // Get In Touch
+              </span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+                Let&apos;s build something great
+              </h3>
+              <p className="text-[#D7E2EA]/75 text-sm sm:text-base font-light max-w-lg leading-relaxed">
+                I&apos;m open to exciting developer opportunities and projects where I can build useful digital products, contribute to modern web applications, and continue growing as a Full Stack Developer.
+              </p>
+            </FadeIn>
 
-        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#D7E2EA]/50 font-light">
-          <p>© {new Date().getFullYear()} Praveen — Full Stack Developer. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <Github className="w-4 h-4" /> <span>GitHub</span>
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <Linkedin className="w-4 h-4" /> <span>LinkedIn</span>
-            </a>
-            <a
-              href="mailto:praveen.dev@example.com"
-              className="hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <Mail className="w-4 h-4" /> <span>Email</span>
-            </a>
+            <FadeIn delay={0.15} y={20} className="flex flex-col sm:flex-row items-center gap-4">
+              <ContactButton
+                href="https://wa.me/919487269305?text=Hi%20Praveen%2C%20I%27d%20like%20to%20connect."
+                label="Let's Connect"
+                target="_blank"
+              />
+              <button
+                onClick={scrollToTop}
+                title="Back to Top"
+                className="p-3.5 rounded-full border border-white/20 text-[#D7E2EA] hover:bg-white/10 transition-colors cursor-pointer"
+              >
+                <ArrowUp className="w-5 h-5" />
+              </button>
+            </FadeIn>
           </div>
-        </div>
-      </footer>
+
+          <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#D7E2EA]/50 font-light">
+            <p>© {new Date().getFullYear()} Praveen — Full Stack Developer. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://github.com/Praveenk-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <Github className="w-4 h-4" /> <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/praveen-karuppasamy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <Linkedin className="w-4 h-4" /> <span>LinkedIn</span>
+              </a>
+              <a
+                href="mailto:praveenkaruppasamy2@gmail.com"
+                className="hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <Mail className="w-4 h-4" /> <span>Email</span>
+              </a>
+              <a
+                href="https://wa.me/919487269305"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <MessageCircle className="w-4 h-4" /> <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }

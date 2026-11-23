@@ -19,6 +19,21 @@ interface ProjectData {
 const projects: ProjectData[] = [
   {
     number: '01',
+    title: 'ShreeTech E-commerce',
+    category: 'E-commerce Product & Scroll Animation',
+    description:
+      'A company e-commerce product featuring a scroll-driven shopping experience, with interactive product presentation built using React, Node.js, and MySQL.',
+    contributions: [
+      'Built an interactive storefront with scroll-based product animations.',
+      'Developed the frontend with React and connected it to a Node.js backend with MySQL.',
+    ],
+    technologies: ['React.js', 'Node.js', 'MySQL'],
+    mainImg: '/images/shreetech-ecommerce.png',
+    liveUrl: 'https://shreetech-ecommerce.vercel.app/',
+    hasLiveSite: true,
+  },
+  {
+    number: '02',
     title: 'Kiaura Publications',
     category: 'Full Stack Book Publishing Website',
     description:
@@ -34,7 +49,7 @@ const projects: ProjectData[] = [
     hasLiveSite: true,
   },
   {
-    number: '02',
+    number: '03',
     title: 'EyeCatchMedia',
     category: 'Full Stack Web Development',
     description:
@@ -50,7 +65,7 @@ const projects: ProjectData[] = [
     hasLiveSite: true,
   },
   {
-    number: '03',
+    number: '04',
     title: 'TPOM Marketplace',
     category: 'Full Stack Web Application',
     description:
@@ -67,7 +82,7 @@ const projects: ProjectData[] = [
     hasLiveSite: true,
   },
   {
-    number: '04',
+    number: '05',
     title: 'Madurai SkyTop Travels',
     category: 'Travel Website & Enquiry Management',
     description:
@@ -84,7 +99,7 @@ const projects: ProjectData[] = [
     hasLiveSite: true,
   },
   {
-    number: '05',
+    number: '06',
     title: 'Atchaya Paathiram Trust',
     category: 'NGO Website & CMS Platform',
     description:
@@ -101,7 +116,7 @@ const projects: ProjectData[] = [
     hasLiveSite: false,
   },
   {
-    number: '06',
+    number: '07',
     title: 'Invoice & Payroll Management System',
     category: 'Enterprise SaaS & HR Tech',
     description:
